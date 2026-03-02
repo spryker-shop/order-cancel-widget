@@ -35,10 +35,6 @@ class OrderCancelButtonWidget extends AbstractWidget
      */
     protected const PARAMETER_RETURN_URL = 'returnUrl';
 
-    /**
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     * @param string $returnUrl
-     */
     public function __construct(OrderTransfer $orderTransfer, string $returnUrl)
     {
         $this->addIsVisibleParameter($orderTransfer);
@@ -47,27 +43,16 @@ class OrderCancelButtonWidget extends AbstractWidget
         $this->addFormParameter();
     }
 
-    /**
-     * @return string
-     */
     public static function getName(): string
     {
         return 'OrderCancelButtonWidget';
     }
 
-    /**
-     * @return string
-     */
     public static function getTemplate(): string
     {
         return '@OrderCancelWidget/views/order-cancel-button/order-cancel-button.twig';
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     *
-     * @return void
-     */
     protected function addIsVisibleParameter(OrderTransfer $orderTransfer): void
     {
         $this->addParameter(
@@ -76,39 +61,21 @@ class OrderCancelButtonWidget extends AbstractWidget
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     *
-     * @return void
-     */
     protected function addOrderParameter(OrderTransfer $orderTransfer): void
     {
         $this->addParameter(static::PARAMETER_ORDER, $orderTransfer);
     }
 
-    /**
-     * @param string $returnUrl
-     *
-     * @return void
-     */
     protected function addReturnUrlParameter(string $returnUrl): void
     {
         $this->addParameter(static::PARAMETER_RETURN_URL, $returnUrl);
     }
 
-    /**
-     * @return void
-     */
     protected function addFormParameter(): void
     {
         $this->addParameter(static::PARAMETER_FORM, $this->getFactory()->getOrderCancelForm()->createView());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     *
-     * @return bool
-     */
     protected function isCustomerApplicableForCancel(OrderTransfer $orderTransfer): bool
     {
         $customerTransfer = $this->getFactory()

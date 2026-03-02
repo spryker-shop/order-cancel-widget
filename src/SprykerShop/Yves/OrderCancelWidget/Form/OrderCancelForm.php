@@ -19,9 +19,6 @@ class OrderCancelForm extends AbstractType
      */
     public const FORM_NAME = 'orderCancelForm';
 
-    /**
-     * @return string
-     */
     public function getBlockPrefix(): string
     {
         return static::FORM_NAME;

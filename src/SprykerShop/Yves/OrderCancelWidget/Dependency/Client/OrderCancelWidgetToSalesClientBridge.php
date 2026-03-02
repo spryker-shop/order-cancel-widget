@@ -25,11 +25,6 @@ class OrderCancelWidgetToSalesClientBridge implements OrderCancelWidgetToSalesCl
         $this->salesClient = $salesClient;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\OrderCancelRequestTransfer $orderCancelRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\OrderCancelResponseTransfer
-     */
     public function cancelOrder(OrderCancelRequestTransfer $orderCancelRequestTransfer): OrderCancelResponseTransfer
     {
         return $this->salesClient->cancelOrder($orderCancelRequestTransfer);

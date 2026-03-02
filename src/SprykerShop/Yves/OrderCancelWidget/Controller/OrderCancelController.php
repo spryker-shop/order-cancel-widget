@@ -50,11 +50,6 @@ class OrderCancelController extends AbstractController
         }
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     public function indexAction(Request $request): RedirectResponse
     {
         $response = $this->executeIndexAction($request);
@@ -62,11 +57,6 @@ class OrderCancelController extends AbstractController
         return $response;
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     protected function executeIndexAction(Request $request): RedirectResponse
     {
         $returnUrl = (string)$request->query->get(static::PARAMETER_RETURN_URL);
@@ -91,11 +81,6 @@ class OrderCancelController extends AbstractController
         return $this->redirectResponseExternal($returnUrl);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\OrderCancelResponseTransfer $orderCancelResponseTransfer
-     *
-     * @return void
-     */
     protected function handleResponseErrors(OrderCancelResponseTransfer $orderCancelResponseTransfer): void
     {
         foreach ($orderCancelResponseTransfer->getMessages() as $messageTransfer) {

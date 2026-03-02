@@ -20,33 +20,21 @@ use Symfony\Component\Form\FormInterface;
  */
 class OrderCancelWidgetFactory extends AbstractFactory
 {
-    /**
-     * @return \Symfony\Component\Form\FormFactoryInterface
-     */
     public function getFormFactory(): FormFactoryInterface
     {
         return $this->getProvidedDependency(ApplicationConstants::FORM_FACTORY);
     }
 
-    /**
-     * @return \Symfony\Component\Form\FormInterface
-     */
     public function getOrderCancelForm(): FormInterface
     {
         return $this->getFormFactory()->create(OrderCancelForm::class);
     }
 
-    /**
-     * @return \SprykerShop\Yves\OrderCancelWidget\Dependency\Client\OrderCancelWidgetToCustomerClientInterface
-     */
     public function getCustomerClient(): OrderCancelWidgetToCustomerClientInterface
     {
         return $this->getProvidedDependency(OrderCancelWidgetDependencyProvider::CLIENT_CUSTOMER);
     }
 
-    /**
-     * @return \SprykerShop\Yves\OrderCancelWidget\Dependency\Client\OrderCancelWidgetToSalesClientInterface
-     */
     public function getSalesClient(): OrderCancelWidgetToSalesClientInterface
     {
         return $this->getProvidedDependency(OrderCancelWidgetDependencyProvider::CLIENT_SALES);
